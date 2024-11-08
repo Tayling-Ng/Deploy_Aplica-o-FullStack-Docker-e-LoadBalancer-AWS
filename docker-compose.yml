@@ -1,0 +1,68 @@
+services:
+    frontend1:
+        build:
+            dockerfile: ./frontend1/Dockerfile
+            context: .
+        ports:
+            - '83:83'
+        depends_on:
+            - backend
+        networks:
+            - idade-network
+
+    frontend2:
+        build:
+            dockerfile: ./frontend2/Dockerfile
+            context: .
+        ports:
+            - '84:84'
+        depends_on:
+            - backend
+        networks:
+            - idade-network
+
+    backend:
+        build:
+            dockerfile: ./backend/Dockerfile
+            context: .
+        ports:
+            - '5000:5000'
+        environment:
+            DB_HOST: ${DB_HOST}
+            DB_USER: ${DB_USER}
+            DB_PASSWORD: ${DB_PASSWORD}
+            DB_NAME: ${DB_NAME}
+        networks:
+            - idade-network
+        depends_on:
+            - db
+
+    db:
+        image: mysql:8.0
+        environment:
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD_FILE: /run/secrets/mysql_password
+        volumes:
+            - db-data-idade:/var/lib/mysql
+        networks:
+            - idade-network
+        secrets:
+            - mysql_root_password
+            - mysql_password
+
+volumes:
+    db-data-idade:
+
+networks:
+    idade-network:
+        driver: bridge
+
+secrets:
+    mysql_root_password:
+        file: ./secrets/mysql_root_password.txt
+    mysql_password:
+        file: ./secrets/mysql_password.txt
+    db_password:
+        file: ./secrets/db_password.txt

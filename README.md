@@ -42,20 +42,20 @@ Implementação de dois Frontends, um Backend, e um Banco de Dados MySQL em Dock
 3. **Criar Load Balancer**
 
     - Tipo: `Application Load Balancer (ALB)`
-    - Esquema: Voltado para internet
-    - Tipo de endereço IP: IPV4
+    - Esquema: `Voltado para internet`
+    - Tipo de endereço IP: `IPV4`
     - Escolher o Grupo de Destino criado no passo 4
     - Listener: `Porta 80`
     - No mínimo 2 zonas de disponibilidade (1 tem que ser a mesma da EC2)
     - Escolher o `SG` criado no passo 1
 
 4. **Criar Target Group**
-    - Tipo de Destino: Instâncias
-    - Porta: 80
-    - Tipo de endereço IP: IPV4
-    - Versão do Protocolo: HTTP1
+    - Tipo de Destino: `Instâncias`
+    - Porta: `80`
+    - Tipo de endereço IP: `IPV4`
+    - Versão do Protocolo: `HTTP1`
     - Escolher a instância criada no passo 2
-    - Incluir como pendente as portas 83 (Frontend 1) e 84 (Fronted 2)
+    - Incluir como pendente as portas `83` (Frontend 1) e `84` (Fronted 2)
 
 ### **Terminal Local**
 

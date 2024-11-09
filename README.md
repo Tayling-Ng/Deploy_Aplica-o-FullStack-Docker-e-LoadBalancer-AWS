@@ -88,7 +88,7 @@ Implementação de dois Frontends, um Backend, e um Banco de Dados MySQL em Dock
     ```
 
     ```
-    # Instalar e rodar o Docker compose
+    # Instalar e rodar o Docker Compose
 
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     ```

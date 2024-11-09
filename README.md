@@ -107,6 +107,9 @@ Implementação de dois Frontends, um Backend, e um Banco de Dados MySQL em Dock
         - Verificar logs dos contêineres: `sudo docker compose logs`
 
 5. **Acessar a aplicação**
+
     - Frontend 1: `<IP público da instância>:83`
     - Frontend 2: `<IP público da instância>:84`
     - DNS do Load Balancer: `<Endereço DNS do ALB>`
+
+    ![Acessando a Aplicação](https://github.com/Tayling-Ng/Deploy_Aplicacao-Docker-LoadBalancer-AWS/raw/main/acessando-aplicacao.gif)
